@@ -50,7 +50,9 @@ class CustomTextFormFeild extends StatelessWidget {
         keyboardType: textInputType,
         obscureText: isObScure ?? false,
         readOnly: readOnly,
+
         decoration: InputDecoration(
+
             prefixIcon: prefixIcon,
             hintText: label,
             suffixIcon: suffixIconbutton,
