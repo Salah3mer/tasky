@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky/features/home/presentation/view/widget/tapbar_item.dart';
+import 'package:tasky/features/home/presentation/view/widget/tabbar_item.dart';
 
 class TabBarList extends StatefulWidget {
   const TabBarList({Key? key}) : super(key: key);
@@ -15,6 +15,7 @@ class _TabBarListState extends State<TabBarList> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
       itemCount: items.length,
       itemBuilder: (context, index) =>

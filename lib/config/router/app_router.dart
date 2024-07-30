@@ -1,16 +1,17 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasky/config/router/routes.dart';
-import 'package:tasky/core/utils/api/dio_client.dart';
 import 'package:tasky/core/utils/server_locator.dart';
-import 'package:tasky/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:tasky/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:tasky/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:tasky/features/auth/presentation/view/login_view.dart';
 import 'package:tasky/features/auth/presentation/view/register_view.dart';
+import 'package:tasky/features/home/presentation/cubits/add_task_cubit/add_task_cubit.dart';
+import 'package:tasky/features/home/presentation/view/home_view.dart';
+import 'package:tasky/features/home/presentation/view/new_task_view.dart';
 import 'package:tasky/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:tasky/features/splash/presentation/view/splash_view.dart';
+import 'package:tasky/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 
 class AppRouter extends Routes {
   static Route? onGenratingRoute(RouteSettings settings) {
@@ -31,6 +32,18 @@ class AppRouter extends Routes {
             builder: ((context) => BlocProvider(
                   create: (context) => LoginCubit(getIt()),
                   child: const LoginView(),
+                )));
+      case Routes.homeView:
+        return MaterialPageRoute(
+            builder: ((context) => BlocProvider(
+                  create: (context) => HomeCubit(),
+                  child: const HomeView(),
+                )));
+      case Routes.newTask:
+        return MaterialPageRoute(
+            builder: ((context) => BlocProvider(
+                  create: (context) => AddTaskCubit(),
+                  child: const NewTaskView(),
                 )));
       default:
         return onRouteError();

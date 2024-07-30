@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tasky/config/styles/app_colors.dart';
 import 'package:tasky/config/styles/font_weight_helper.dart';
 
 class AppFonts {
@@ -8,11 +9,37 @@ class AppFonts {
         color: Colors.black,
         fontWeight: FontWeightHelper.bold,
       );
+
+  static TextStyle font16BoldColorDark(context) => GoogleFonts.dmSans(
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        color: Color(0xff24252C),
+        fontWeight: FontWeightHelper.bold,
+      );
+
+  static TextStyle font12MediumColorOrange(context) => GoogleFonts.dmSans(
+        fontSize: getResponsiveFontSize(context, fontSize: 12),
+        color: Color(0xffFF7D53),
+        fontWeight: FontWeightHelper.medium,
+      );
+
+  static TextStyle font13RegularColorGray(context) => GoogleFonts.dmSans(
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        color: Color(0xff6E6A7C),
+        fontWeight: FontWeightHelper.regular,
+      );
+
+  static TextStyle font19MediumColorprimary(context) => GoogleFonts.dmSans(
+        fontSize: getResponsiveFontSize(context, fontSize: 19),
+        color: AppColor.primaryColor,
+        fontWeight: FontWeightHelper.medium,
+      );
+
   static TextStyle font14RegularColorGray(context) => GoogleFonts.dmSans(
         fontSize: getResponsiveFontSize(context, fontSize: 14),
         color: const Color(0xff6E6A7C),
         fontWeight: FontWeightHelper.regular,
       );
+
   static TextStyle font18BoldColorWhite(context) => GoogleFonts.dmSans(
         fontSize: getResponsiveFontSize(context, fontSize: 18),
         color: Colors.white,

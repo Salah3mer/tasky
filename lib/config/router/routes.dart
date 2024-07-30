@@ -3,4 +3,6 @@ class Routes {
   static const String onBoarding = '/onBoarding';
   static const String loginView = '/login';
   static const String registerView = '/registerView';
+  static const String homeView = '/homeView';
+  static const String newTask = '/newTask';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasky/config/styles/app_colors.dart';
+import 'package:tasky/config/styles/app_fonts.dart';
 
 class CustomTextFormFeild extends StatelessWidget {
   Function()? onTap;
@@ -55,6 +56,7 @@ class CustomTextFormFeild extends StatelessWidget {
 
             prefixIcon: prefixIcon,
             hintText: label,
+            hintStyle: TextStyle(color: Color(0xff7F7F7F)),
             suffixIcon: suffixIconbutton,
             fillColor: const Color(0xffFFFFFF),
             filled: true,

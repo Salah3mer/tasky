@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
       if(AppConstans.token==null){
         widget = Routes.loginView;
       }else{
-        widget =Routes.registerView;
+        widget =Routes.homeView;
       }
     }else{
       widget=Routes.onBoarding;

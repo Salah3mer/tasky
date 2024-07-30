@@ -36,7 +36,7 @@ class ApiErrorHandler {
                   }
                   break;
                 case 401:
-                  if (error.response!.data['errors'] != null) {
+                  if (error.response!.data['error'] != null) {
                     ErrorResponse errorResponse =
                         ErrorResponse.fromJson(error.response?.data);
                     errorDescription = errorResponse.errors?[0].message;

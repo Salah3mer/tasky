@@ -4,9 +4,6 @@ import 'package:tasky/config/router/routes.dart';
 import 'package:tasky/core/utils/app_constans.dart';
 import 'package:tasky/core/utils/local/cash_helper.dart';
 import 'package:tasky/core/utils/server_locator.dart';
-import 'package:tasky/features/auth/presentation/view/login_view.dart';
-import 'package:tasky/features/on_boarding/presentation/view/on_boarding_view.dart';
-import 'package:tasky/features/splash/presentation/view/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          color: Colors.white
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

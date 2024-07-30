@@ -18,19 +18,20 @@ class TabBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isActive?AppColor.primaryColor: AppColor.tapBarContainerColor,
-        borderRadius: BorderRadius.circular(24)
-      ),
+          color:
+              isActive ? AppColor.primaryColor : AppColor.tapBarContainerColor,
+          borderRadius: BorderRadius.circular(24)),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Text(
           tapName,
-          style: isActive? AppFonts.font16BoldColorDark(context).copyWith(
-            color: Colors.white
-          ): AppFonts.font16BoldColorDark(context).copyWith(
-            fontWeight: FontWeightHelper.regular,
-            color: Color(0xff7C7C80),
-          ),
+          style: isActive
+              ? AppFonts.font16BoldColorDark(context)
+                  .copyWith(color: Colors.white)
+              : AppFonts.font16BoldColorDark(context).copyWith(
+                  fontWeight: FontWeightHelper.regular,
+                  color: Color(0xff7C7C80),
+                ),
         ),
       ),
     );
