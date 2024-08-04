@@ -5,7 +5,7 @@ class ShimmerListPlaceHolder extends StatelessWidget {
   const ShimmerListPlaceHolder({super.key});
 
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 22.0),
       physics: const NeverScrollableScrollPhysics(),

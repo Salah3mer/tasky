@@ -40,6 +40,4 @@ class TaskCubit extends Cubit<TaskState> {
       (task) => emit(DeleteTaskSuccessState()),
     );
   }
-
-
 }

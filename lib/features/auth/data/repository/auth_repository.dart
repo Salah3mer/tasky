@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:tasky/core/error/api_response.dart';
+import 'package:tasky/features/auth/data/models/auth_error_model.dart';
 import 'package:tasky/features/auth/data/models/user_model.dart';
 
 abstract class AuthRepository {
-  Future<Either<ApiResponse, UserModel>> register({
+  Future<Either<AuthErrorModel, UserModel>> register({
     required String phoneNumber,
     required String password,
     required String name,
@@ -12,8 +13,10 @@ abstract class AuthRepository {
     required String address,
   });
 
-  Future<Either<ApiResponse, UserModel>> login({
+  Future<Either<AuthErrorModel, UserModel>> login({
     required String phoneNumber,
     required String password,
   });
+
+  Future<bool> logOut();
 }

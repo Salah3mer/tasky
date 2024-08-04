@@ -26,13 +26,12 @@ class NewTaskTextFormFeild extends StatelessWidget {
         CustomTextFormFeild(
           label: 'Enter title here...',
           controller: AddTaskCubit.get(context).titleController,
-          validator: (value){
+          validator: (value) {
             if (value!.isEmpty) {
               return 'Title is required';
             }
             return null;
           },
-        
         ),
         const SizedBox(
           height: 16,
@@ -48,7 +47,7 @@ class NewTaskTextFormFeild extends StatelessWidget {
           label: 'Enter description here...',
           controller: AddTaskCubit.get(context).descriptionController,
           maxLine: 6,
-          validator: (value){
+          validator: (value) {
             if (value!.isEmpty) {
               return 'Description is required';
             }
@@ -92,7 +91,7 @@ class NewTaskTextFormFeild extends StatelessWidget {
             });
           },
           label: 'choose due date...',
-          validator: (value){
+          validator: (value) {
             if (value!.isEmpty) {
               return 'Due date is required';
             }
@@ -112,4 +111,3 @@ class NewTaskTextFormFeild extends StatelessWidget {
     );
   }
 }
-

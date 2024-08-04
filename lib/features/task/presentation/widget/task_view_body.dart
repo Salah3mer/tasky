@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -13,7 +12,6 @@ import 'package:tasky/features/task/presentation/widget/priority_drop_down.dart'
 import 'package:tasky/features/task/presentation/widget/status_drop_down.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-
 
 class TaskViewBody extends StatelessWidget {
   const TaskViewBody({
@@ -131,8 +129,7 @@ class TaskViewBody extends StatelessWidget {
                         ),
                       ),
                     ),
-    
-                       const SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                   ],
@@ -145,4 +142,3 @@ class TaskViewBody extends StatelessWidget {
     );
   }
 }
-

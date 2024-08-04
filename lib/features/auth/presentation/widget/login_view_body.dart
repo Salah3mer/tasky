@@ -45,7 +45,7 @@ class LoginViewBody extends StatelessWidget {
               CustomSnackBar.error(
                   maxLines: 5,
                   message:
-                      'There is some information. You need to do something with that${state.error.toString()}'));
+                      'There is some information. You need to do something with that${state.error}'));
         }
       },
       builder: (context, state) {

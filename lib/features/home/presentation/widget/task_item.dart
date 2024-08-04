@@ -70,9 +70,8 @@ class TaskItem extends StatelessWidget {
                             style: AppFonts.font12MediumColorOrange(context)
                                 .copyWith(
                                     color: StatusColorHelper.getColor(
-                                            StatusColorHelper.stringToColorName(
-                                                task.status!))
-                                        ),
+                                        StatusColorHelper.stringToColorName(
+                                            task.status!))),
                           ),
                         ),
                       ),

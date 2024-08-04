@@ -40,7 +40,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         level: experincelevelController.text,
         address: addressController.text);
     response.fold(
-        (error) => emit(RegisterErrorState(error: error.error.toString())),
+        (error) => emit(RegisterErrorState(error: error.message.toString())),
         (user) => emit(RegisterSuccessState(userModel: user)));
   }
 }

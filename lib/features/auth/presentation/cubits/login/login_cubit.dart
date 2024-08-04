@@ -2,6 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:tasky/config/router/routes.dart';
+import 'package:tasky/core/utils/app_constans.dart';
+import 'package:tasky/core/utils/local/cash_helper.dart';
 
 import 'package:tasky/features/auth/data/models/user_model.dart';
 import 'package:tasky/features/auth/data/repository/auth_repository_impl.dart';
@@ -30,7 +33,21 @@ class LoginCubit extends Cubit<LoginState> {
     final response = await authRepository.login(
         phoneNumber: phoneController.text, password: passwordController.text);
     response.fold(
-        (error) => emit(LoginErrorState(error: error.error.toString())),
+        (error) => emit(LoginErrorState(error: error.message.toString())),
         (user) => emit(LoginSuccessState(userModel: user)));
+  }
+
+  Future<void> logOut(context) async {
+    final responce = await authRepository.logOut();
+    if (responce) {
+      CashHelper.removeData(key: AppConstans.tokenKey);
+      CashHelper.removeData(key: AppConstans.reFreshtokenKey);
+
+      Navigator.pushReplacementNamed(context, Routes.loginView);
+
+      emit(LogOutSuccessState());
+    } else {
+      emit(LogOutErrorState());
+    }
   }
 }

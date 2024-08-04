@@ -3,6 +3,7 @@ class EndPoints {
   static const String register = 'auth/register';
   static const String login = 'auth/login';
   static const String refeshToken = 'auth/refresh-token?token=';
+  static const String logOut = 'auth/logout';
   static const String uploadImage = 'upload/image';
   static const String addTask = 'todos';
   static const String todos = 'todos/';

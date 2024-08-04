@@ -24,4 +24,3 @@ final class DeleteTaskErrorState extends TaskState {
 
   DeleteTaskErrorState({required this.error});
 }
-

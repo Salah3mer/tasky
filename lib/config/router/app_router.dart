@@ -38,10 +38,17 @@ class AppRouter extends Routes {
                 )));
       case Routes.homeView:
         return MaterialPageRoute(
-            builder: ((context) => BlocProvider(
-                  create: (context) => HomeCubit(getIt())
-                    ..getTasks()
-                    ..getFilterList('all'),
+            builder: ((context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => HomeCubit(getIt())
+                        ..getTasks()
+                        ..getFilterList('all'),
+                    ),
+                    BlocProvider(
+                      create: (context) => LoginCubit(getIt()),
+                    ),
+                  ],
                   child: HomeView(),
                 )));
       case Routes.newTask:
@@ -63,7 +70,7 @@ class AppRouter extends Routes {
                     taskModel: task,
                   ),
                 ));
-                
+
       default:
         return onRouteError();
     }

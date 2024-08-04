@@ -47,6 +47,4 @@ class TaskRepositoryImpl extends TaskRepository {
       return left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
     }
   }
-
-
 }

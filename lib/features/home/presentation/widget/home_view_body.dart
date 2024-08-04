@@ -19,16 +19,15 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
-
-          if(state is HomeErrorState){
-             showTopSnackBar(
+        if (state is HomeErrorState) {
+          showTopSnackBar(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               Overlay.of(context),
               CustomSnackBar.error(
                   maxLines: 5,
                   message:
                       ' There is An Error. You need to do something with that ${state.errorMessage} '));
-          }
+        }
       },
       builder: (context, state) {
         return BlocBuilder<HomeCubit, HomeState>(

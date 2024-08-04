@@ -70,7 +70,8 @@ class HomeRepositoryImpl extends HomeRepository {
       return left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
     }
   }
-    @override
+
+  @override
   Future<Either<ApiErrorHandler, TaskModel>> getTaskByQr(
       {required String id}) async {
     try {

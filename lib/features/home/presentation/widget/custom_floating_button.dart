@@ -29,11 +29,10 @@ class CustomFloatingButtons extends StatelessWidget {
               final qrCode = await FlutterBarcodeScanner.scanBarcode(
                   '#ff6666', 'Cancel', true, ScanMode.QR);
 
-              HomeCubit.get(context).getTaskByQr(qrID: qrCode).then((val){
+              HomeCubit.get(context).getTaskByQr(qrID: qrCode).then((val) {
                 context.pushReplacementNamed(Routes.task,
-                  arguments: HomeCubit.get(context).qrTask);
+                    arguments: HomeCubit.get(context).qrTask);
               });
-              
             },
             child: CircleAvatar(
                 backgroundColor: AppColor.secFloatingActionButton,

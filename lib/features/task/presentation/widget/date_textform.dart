@@ -20,8 +20,7 @@ class DateTextForm extends StatelessWidget {
       child: CustomTextFormFeild(
         color: const Color(0xffF0ECFF),
         controller: TaskCubit.get(context).dueDateController =
-            TextEditingController(
-                text: taskModel.createdAt!.split('T').first),
+            TextEditingController(text: taskModel.createdAt!.split('T').first),
         label: ' End Date...',
         validator: (value) {
           if (value!.isEmpty) {

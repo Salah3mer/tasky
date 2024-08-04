@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: customHomeAppBar(),
+        appBar: customHomeAppBar(context),
         body: SmartRefresher(
           footer: const CustomFooterWidget(),
           onRefresh: () async {
@@ -35,5 +35,3 @@ class HomeView extends StatelessWidget {
         floatingActionButton: const CustomFloatingButtons());
   }
 }
-
-

@@ -14,7 +14,7 @@ class StatusDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownMenu(
         initialSelection: status,
-         controller: TaskCubit.get(context).statusController,
+        controller: TaskCubit.get(context).statusController,
         trailingIcon: Icon(
           FontAwesomeIcons.caretDown,
           color: AppColor.primaryColor,

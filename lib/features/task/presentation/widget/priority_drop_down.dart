@@ -14,7 +14,7 @@ class PriorityDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownMenu(
       initialSelection: priorty,
-       controller: TaskCubit.get(context).priorityController,
+      controller: TaskCubit.get(context).priorityController,
       trailingIcon: Icon(
         FontAwesomeIcons.caretDown,
         color: AppColor.primaryColor,

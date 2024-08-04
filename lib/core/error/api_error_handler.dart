@@ -46,7 +46,7 @@ class ApiErrorHandler {
                   CashHelper.removeData(key: AppConstans.tokenKey);
                   break;
                 case 422:
-                  if (error.response!.data['errors'] != null) {
+                  if (error.response!.data['error'] != null) {
                     ErrorResponse errorResponse =
                         ErrorResponse.fromJson(error.response?.data);
                     errorDescription = errorResponse.errors?[0].message;

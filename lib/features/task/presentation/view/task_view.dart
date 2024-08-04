@@ -22,4 +22,3 @@ class TaskView extends StatelessWidget {
     );
   }
 }
-

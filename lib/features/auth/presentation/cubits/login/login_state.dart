@@ -22,3 +22,7 @@ final class LoginErrorState extends LoginState {
 
   LoginErrorState({required this.error});
 }
+
+final class LogOutSuccessState extends LoginState {}
+
+final class LogOutErrorState extends LoginState {}

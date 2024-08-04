@@ -12,5 +12,5 @@ abstract class TaskRepository {
       required String status,
       required String imageUrl,
       required String priority});
-  Future<Either<ApiErrorHandler , TaskModel>> deleteTask({required String id});
+  Future<Either<ApiErrorHandler, TaskModel>> deleteTask({required String id});
 }
