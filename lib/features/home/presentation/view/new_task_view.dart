@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasky/core/utils/helper/widget/custom_appbar.dart';
-import 'package:tasky/features/home/presentation/view/widget/new_task_view_body.dart';
+import 'package:tasky/features/home/presentation/widget/new_task_view_body.dart';
 
 class NewTaskView extends StatelessWidget {
   const NewTaskView({super.key});

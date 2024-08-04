@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:tasky/core/utils/error/api_response.dart';
+import 'package:tasky/core/error/api_response.dart';
 import 'package:tasky/features/auth/data/models/user_model.dart';
 
 abstract class AuthRepository {
@@ -16,6 +16,4 @@ abstract class AuthRepository {
     required String phoneNumber,
     required String password,
   });
-
-  Future<void> refeshToken({required String token});
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasky/config/router/routes.dart';
 import 'package:tasky/config/styles/app_fonts.dart';
 import 'package:tasky/core/app_images.dart';
 
-customAppBar(context, {required String text}) => AppBar(
+customAppBar(context, {required String text, List<Widget>? widgets}) => AppBar(
       leading: GestureDetector(
         onTap: () {
-          Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, Routes.homeView);
         },
         child: Transform.flip(
             flipX: true,
@@ -23,4 +24,6 @@ customAppBar(context, {required String text}) => AppBar(
         text,
         style: AppFonts.font24BoldColorDark(context),
       ),
+      automaticallyImplyLeading: false,
+      actions: widgets,
     );

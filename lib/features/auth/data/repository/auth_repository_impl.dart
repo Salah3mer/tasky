@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:tasky/core/utils/api/dio_client.dart';
-import 'package:tasky/core/utils/api/end_points.dart';
-import 'package:tasky/core/utils/app_constans.dart';
-import 'package:tasky/core/utils/error/api_error_handler.dart';
-import 'package:tasky/core/utils/error/api_response.dart';
+import 'package:tasky/core/api/dio_client.dart';
+import 'package:tasky/core/api/end_points.dart';
+import 'package:tasky/core/error/api_error_handler.dart';
+import 'package:tasky/core/error/api_response.dart';
 import 'package:tasky/features/auth/data/models/login_model.dart';
 import 'package:tasky/features/auth/data/models/register_model.dart';
 import 'package:tasky/features/auth/data/models/user_model.dart';
@@ -47,12 +46,5 @@ class AuthRepositoryImpl extends AuthRepository {
     } catch (e) {
       return Left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
     }
-  }
-
-  @override
-  Future<void> refeshToken({required String token}) async {
-    final getNewToken = await dioClient
-        .get('${EndPoints.refeshToken}' + '${AppConstans.reFreshtokenKey}');
-    dioClient.updateHeader(getNewToken.data);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tasky/config/router/app_router.dart';
 import 'package:tasky/config/router/routes.dart';
+import 'package:tasky/config/styles/light_theme.dart';
 import 'package:tasky/core/utils/app_constans.dart';
 import 'package:tasky/core/utils/local/cash_helper.dart';
 import 'package:tasky/core/utils/server_locator.dart';
@@ -8,8 +9,10 @@ import 'package:tasky/core/utils/server_locator.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CashHelper.init();
-  await getItSetup();
-  AppConstans.token=CashHelper.getString(key: AppConstans.tokenKey);
+  getItSetup();
+  AppConstans.token = CashHelper.getString(key: AppConstans.tokenKey);
+  AppConstans.reFreshtoken =
+      CashHelper.getString(key: AppConstans.reFreshtokenKey);
   runApp(const MyApp());
 }
 
@@ -18,17 +21,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+ 
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          color: Colors.white
-        ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: lightTheme(),
       onGenerateRoute: AppRouter.onGenratingRoute,
       initialRoute: Routes.initalRoute,
     );

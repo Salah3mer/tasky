@@ -6,7 +6,9 @@ sealed class LoginState {}
 final class LoginInitial extends LoginState {}
 
 final class LoginLoadingState extends LoginState {}
+
 final class LoginIsObScureLoadingState extends LoginState {}
+
 final class LoginIsObScureSuccessState extends LoginState {}
 
 final class LoginSuccessState extends LoginState {

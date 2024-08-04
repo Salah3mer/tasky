@@ -6,12 +6,15 @@ import 'package:tasky/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:tasky/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:tasky/features/auth/presentation/view/login_view.dart';
 import 'package:tasky/features/auth/presentation/view/register_view.dart';
+import 'package:tasky/features/home/data/models/task_model.dart';
 import 'package:tasky/features/home/presentation/cubits/add_task_cubit/add_task_cubit.dart';
 import 'package:tasky/features/home/presentation/view/home_view.dart';
 import 'package:tasky/features/home/presentation/view/new_task_view.dart';
 import 'package:tasky/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:tasky/features/splash/presentation/view/splash_view.dart';
 import 'package:tasky/features/home/presentation/cubits/home_cubit/home_cubit.dart';
+import 'package:tasky/features/task/presentation/cubit/task_cubit.dart';
+import 'package:tasky/features/task/presentation/view/task_view.dart';
 
 class AppRouter extends Routes {
   static Route? onGenratingRoute(RouteSettings settings) {
@@ -36,15 +39,31 @@ class AppRouter extends Routes {
       case Routes.homeView:
         return MaterialPageRoute(
             builder: ((context) => BlocProvider(
-                  create: (context) => HomeCubit(),
-                  child: const HomeView(),
+                  create: (context) => HomeCubit(getIt())
+                    ..getTasks()
+                    ..getFilterList('all'),
+                  child: HomeView(),
                 )));
       case Routes.newTask:
         return MaterialPageRoute(
             builder: ((context) => BlocProvider(
-                  create: (context) => AddTaskCubit(),
+                  create: (context) => AddTaskCubit(
+                    getIt(),
+                  ),
                   child: const NewTaskView(),
                 )));
+
+      case Routes.task:
+        final task = settings.arguments as TaskModel;
+
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => TaskCubit(getIt()),
+                  child: TaskView(
+                    taskModel: task,
+                  ),
+                ));
+                
       default:
         return onRouteError();
     }

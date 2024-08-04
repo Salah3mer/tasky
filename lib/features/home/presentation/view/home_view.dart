@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:tasky/config/styles/app_fonts.dart';
-import 'package:tasky/features/home/presentation/view/widget/custom_floating_button.dart';
-import 'package:tasky/features/home/presentation/view/widget/custom_home_appbar.dart';
-import 'package:tasky/features/home/presentation/view/widget/tabbar_list.dart';
-import 'package:tasky/features/home/presentation/view/widget/task_item.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:tasky/core/utils/helper/widget/custom_footer.dart';
+import 'package:tasky/features/home/presentation/cubits/home_cubit/home_cubit.dart';
+import 'package:tasky/features/home/presentation/widget/custom_floating_button.dart';
+import 'package:tasky/features/home/presentation/widget/custom_home_appbar.dart';
+import 'package:tasky/features/home/presentation/widget/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+  ScrollController scroll = ScrollController();
+  final RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: customHomeAppBar(),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'My Tasks',
-                  style: AppFonts.font16BoldColorDark(context),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 16),
-                  child: SizedBox(height: 50, child: TabBarList()),
-                ),
-                const TaskItem()
-              ],
-            ),
-          ),
+        body: SmartRefresher(
+          footer: const CustomFooterWidget(),
+          onRefresh: () async {
+            await Future.delayed(const Duration(milliseconds: 1000));
+            _refreshController.refreshCompleted();
+          },
+          onLoading: () async {
+            await Future.delayed(const Duration(milliseconds: 1000));
+            // ignore: use_build_context_synchronously
+            HomeCubit.get(context).getTasks();
+            _refreshController.loadComplete();
+          },
+          enablePullUp: true,
+          controller: _refreshController,
+          child: HomeViewBody(scroll: scroll),
         ),
         floatingActionButton: const CustomFloatingButtons());
   }
 }
+
+

@@ -25,14 +25,14 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     bool? onBoarding = CashHelper.getBoolean(key: AppConstans.onBoardingKey);
     var widget;
-    if(onBoarding!=null){
-      if(AppConstans.token==null){
+    if (onBoarding != null) {
+      if (AppConstans.token == null) {
         widget = Routes.loginView;
-      }else{
-        widget =Routes.homeView;
+      } else {
+        widget = Routes.homeView;
       }
-    }else{
-      widget=Routes.onBoarding;
+    } else {
+      widget = Routes.onBoarding;
     }
 
     super.initState();

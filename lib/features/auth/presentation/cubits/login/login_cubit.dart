@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tasky/core/utils/error/api_error_handler.dart';
-import 'package:tasky/core/utils/error/api_response.dart';
+
 import 'package:tasky/features/auth/data/models/user_model.dart';
 import 'package:tasky/features/auth/data/repository/auth_repository_impl.dart';
 
@@ -20,12 +19,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   bool isObScure = true;
 
-  void changeEyeState(){
+  void changeEyeState() {
     emit(LoginIsObScureLoadingState());
-    isObScure=!isObScure;
+    isObScure = !isObScure;
     emit(LoginIsObScureSuccessState());
   }
-
 
   Future<void> login() async {
     emit(LoginLoadingState());

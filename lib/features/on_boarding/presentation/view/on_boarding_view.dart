@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tasky/core/app_images.dart';
-import 'package:tasky/features/on_boarding/presentation/view/widget/on_boarding_button.dart';
-import 'package:tasky/features/on_boarding/presentation/view/widget/on_boarding_text.dart';
+import 'package:tasky/features/on_boarding/presentation/widget/on_boarding_button.dart';
+import 'package:tasky/features/on_boarding/presentation/widget/on_boarding_text.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});

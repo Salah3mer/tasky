@@ -4,7 +4,8 @@ class UserModel {
   final String? refreshToken;
   final String? displayName;
 
-  const UserModel( {this.displayName,this.id, this.accessToken, this.refreshToken});
+  const UserModel(
+      {this.displayName, this.id, this.accessToken, this.refreshToken});
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json['_id'] as String?,

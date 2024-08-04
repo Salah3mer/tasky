@@ -5,4 +5,5 @@ class Routes {
   static const String registerView = '/registerView';
   static const String homeView = '/homeView';
   static const String newTask = '/newTask';
+  static const String task = '/task';
 }
