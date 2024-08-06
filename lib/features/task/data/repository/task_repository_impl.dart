@@ -19,7 +19,7 @@ class TaskRepositoryImpl extends TaskRepository {
 
       return right(TaskModel.fromJson(response.data));
     } catch (e) {
-      return left(ApiErrorHandler.getMessage(e));
+      return left(ApiErrorHandler.handle(e) as ApiErrorHandler);
     }
   }
 
@@ -44,7 +44,7 @@ class TaskRepositoryImpl extends TaskRepository {
 
       return right(TaskModel.fromJson(response.data));
     } catch (e) {
-      return left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
+      return left(ApiResponse.withError(ApiErrorHandler.handle(e)));
     }
   }
 }

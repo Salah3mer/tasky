@@ -1,95 +1,40 @@
 import 'package:dio/dio.dart';
-import 'package:tasky/core/utils/app_constans.dart';
-import 'package:tasky/core/utils/local/cash_helper.dart';
+import 'package:tasky/core/error/api_error_model.dart';
 
-import 'error_response.dart';
 
 class ApiErrorHandler {
-  static dynamic getMessage(error) {
-    dynamic errorDescription = "";
-    if (error is Exception) {
-      try {
-        if (error is DioException) {
-          switch (error.type) {
-            case DioExceptionType.cancel:
-              errorDescription = "Request to API server was cancelled";
-              break;
-            case DioExceptionType.connectionTimeout:
-              errorDescription = "Connection timeout with API server";
-              break;
-            case DioExceptionType.sendTimeout:
-              errorDescription = "Send timeout";
-              break;
-            case DioExceptionType.receiveTimeout:
-              errorDescription =
-                  "Receive timeout in connection with API server";
-              break;
-            case DioExceptionType.badResponse:
-              switch (error.response!.statusCode) {
-                case 403:
-                  if (error.response!.data['errors'] != null) {
-                    ErrorResponse errorResponse =
-                        ErrorResponse.fromJson(error.response?.data);
-                    errorDescription = errorResponse.errors?[0].message;
-                  } else {
-                    errorDescription = error.response!.data['message'];
-                  }
-                  break;
-                case 401:
-                  if (error.response!.data['error'] != null) {
-                    ErrorResponse errorResponse =
-                        ErrorResponse.fromJson(error.response?.data);
-                    errorDescription = errorResponse.errors?[0].message;
-                  } else {
-                    errorDescription = error.response!.data['message'];
-                  }
-                  CashHelper.removeData(key: AppConstans.tokenKey);
-                  break;
-                case 422:
-                  if (error.response!.data['error'] != null) {
-                    ErrorResponse errorResponse =
-                        ErrorResponse.fromJson(error.response?.data);
-                    errorDescription = errorResponse.errors?[0].message;
-                  } else {
-                    errorDescription = error.response!.data['message'];
-                  }
-                case 404:
-                case 500:
-                case 503:
-                case 429:
-                  errorDescription = error.response!.statusMessage;
-                  break;
-                default:
-                  ErrorResponse errorResponse =
-                      ErrorResponse.fromJson(error.response!.data);
-                  if (errorResponse.errors != null &&
-                      errorResponse.errors!.isNotEmpty) {
-                    errorDescription = errorResponse;
-                  } else {
-                    errorDescription =
-                        "Failed to load data - status code: ${error.response!.statusCode}";
-                  }
-              }
-              break;
-            case DioExceptionType.badCertificate:
-              // TODO: Handle this case.
-              break;
-            case DioExceptionType.connectionError:
-              // TODO: Handle this case.
-              break;
-            case DioExceptionType.unknown:
-              errorDescription = "Request to API call limit excited ";
-              break;
-          }
-        } else {
-          errorDescription = "Unexpected error occured";
-        }
-      } on FormatException catch (e) {
-        errorDescription = e.toString();
+  static ApiErrorModel handle(dynamic error) {
+    if (error is DioException) {
+      switch (error.type) {
+        case DioExceptionType.connectionError:
+          return ApiErrorModel(message: "Connection to server failed");
+        case DioExceptionType.cancel:
+          return ApiErrorModel(message: "Request to the server was cancelled");
+        case DioExceptionType.connectionTimeout:
+          return ApiErrorModel(message: "Connection timeout with the server");
+        case DioExceptionType.unknown:
+          return ApiErrorModel(
+              message:
+              "Connection to the server failed due to internet connection");
+        case DioExceptionType.receiveTimeout:
+          return ApiErrorModel(
+              message: "Receive timeout in connection with the server");
+        case DioExceptionType.badResponse:
+          return _handleError(error.response?.data);
+        case DioExceptionType.sendTimeout:
+          return ApiErrorModel(
+              message: "Send timeout in connection with the server");
+        default:
+          return ApiErrorModel(message: "Something went wrong");
       }
     } else {
-      errorDescription = "is not a subtype of exception";
+      return ApiErrorModel(message: error.toString());
     }
-    return errorDescription;
   }
+}
+
+ApiErrorModel _handleError(dynamic data) {
+  print(ApiErrorModel.fromJson(data));
+
+  return ApiErrorModel.fromJson(data);
 }

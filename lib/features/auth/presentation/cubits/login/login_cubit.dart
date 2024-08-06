@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:tasky/config/router/routes.dart';
+import 'package:tasky/core/error/api_error_model.dart';
 import 'package:tasky/core/utils/app_constans.dart';
 import 'package:tasky/core/utils/local/cash_helper.dart';
 
@@ -33,7 +34,7 @@ class LoginCubit extends Cubit<LoginState> {
     final response = await authRepository.login(
         phoneNumber: phoneController.text, password: passwordController.text);
     response.fold(
-        (error) => emit(LoginErrorState(error: error.message.toString())),
+        (error) => emit(LoginErrorState(error: error  )),
         (user) => emit(LoginSuccessState(userModel: user)));
   }
 

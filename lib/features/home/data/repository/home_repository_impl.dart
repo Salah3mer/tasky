@@ -34,7 +34,7 @@ class HomeRepositoryImpl extends HomeRepository {
 
       return right(TaskModel.fromJson(response.data));
     } catch (e) {
-      return left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
+      return left(ApiResponse.withError(ApiErrorHandler.handle(e)));
     }
   }
 
@@ -56,7 +56,7 @@ class HomeRepositoryImpl extends HomeRepository {
       return right(response.data['image']);
     } catch (e) {
       return left(
-          ApiResponse.withError(ApiErrorHandler.getMessage(e.toString())));
+          ApiResponse.withError(ApiErrorHandler.handle(e.toString())));
     }
   }
 
@@ -67,7 +67,7 @@ class HomeRepositoryImpl extends HomeRepository {
       return right(
           List.from(response.data.map((json) => TaskModel.fromJson(json))));
     } catch (e) {
-      return left(ApiResponse.withError(ApiErrorHandler.getMessage(e)));
+      return left(ApiResponse.withError(ApiErrorHandler.handle(e)));
     }
   }
 
@@ -79,7 +79,7 @@ class HomeRepositoryImpl extends HomeRepository {
 
       return right(TaskModel.fromJson(response.data));
     } catch (e) {
-      return left(ApiErrorHandler.getMessage(e));
+      return left(ApiErrorHandler.handle(e) as ApiErrorHandler);
     }
   }
 }

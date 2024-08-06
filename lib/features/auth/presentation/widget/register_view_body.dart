@@ -9,6 +9,7 @@ import 'package:tasky/features/auth/presentation/cubits/register/register_cubit.
 import 'package:tasky/features/auth/presentation/widget/already_have_account.dart';
 import 'package:tasky/features/auth/presentation/widget/register_textformfield.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/safe_area_values.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class RegisterViewBody extends StatelessWidget {
@@ -33,12 +34,12 @@ class RegisterViewBody extends StatelessWidget {
         }
         if (state is RegisterErrorState) {
           showTopSnackBar(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
               Overlay.of(context),
               CustomSnackBar.error(
+                  messagePadding: EdgeInsetsDirectional.all(5),
                   maxLines: 5,
                   message:
-                      'There is some information. You need to do something with that${state.error.toString()}'));
+                      '${state.error}'));
         }
       },
       builder: (BuildContext context, RegisterState state) => SafeArea(
@@ -71,6 +72,7 @@ class RegisterViewBody extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
+              (state is RegisterLoadingState)?Center(child: CircularProgressIndicator(),):
               CustomButton(
                   text: 'Sign Up',
                   onTap: () {

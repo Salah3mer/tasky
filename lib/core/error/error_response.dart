@@ -4,9 +4,9 @@ class ErrorResponse {
   ErrorResponse({this.errors});
 
   ErrorResponse.fromJson(Map<String, dynamic> json) {
-    if (json['errors'] != null) {
+    if (json['error'] != null) {
       errors = <Errors>[];
-      json['errors'].forEach((v) {
+      json['error'].forEach((v) {
         errors!.add(Errors.fromJson(v));
       });
     }
