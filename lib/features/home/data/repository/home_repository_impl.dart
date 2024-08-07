@@ -55,8 +55,7 @@ class HomeRepositoryImpl extends HomeRepository {
           await dioClient.post(EndPoints.uploadImage, data: fromData);
       return right(response.data['image']);
     } catch (e) {
-      return left(
-          ApiResponse.withError(ApiErrorHandler.handle(e.toString())));
+      return left(ApiResponse.withError(ApiErrorHandler.handle(e.toString())));
     }
   }
 

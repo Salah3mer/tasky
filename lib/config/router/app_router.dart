@@ -11,6 +11,8 @@ import 'package:tasky/features/home/presentation/cubits/add_task_cubit/add_task_
 import 'package:tasky/features/home/presentation/view/home_view.dart';
 import 'package:tasky/features/home/presentation/view/new_task_view.dart';
 import 'package:tasky/features/on_boarding/presentation/view/on_boarding_view.dart';
+import 'package:tasky/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:tasky/features/profile/presentation/view/profile_view.dart';
 import 'package:tasky/features/splash/presentation/view/splash_view.dart';
 import 'package:tasky/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:tasky/features/task/presentation/cubit/task_cubit.dart';
@@ -69,6 +71,12 @@ class AppRouter extends Routes {
                   child: TaskView(
                     taskModel: task,
                   ),
+                ));
+      case Routes.profile:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => ProfileCubit(getIt())..getProfile(),
+                  child: const ProfileView(),
                 ));
 
       default:

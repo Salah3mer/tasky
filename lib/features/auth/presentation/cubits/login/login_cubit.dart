@@ -33,8 +33,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoadingState());
     final response = await authRepository.login(
         phoneNumber: phoneController.text, password: passwordController.text);
-    response.fold(
-        (error) => emit(LoginErrorState(error: error  )),
+    response.fold((error) => emit(LoginErrorState(error: error)),
         (user) => emit(LoginSuccessState(userModel: user)));
   }
 

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:tasky/core/error/api_error_model.dart';
 
-
 class ApiErrorHandler {
   static ApiErrorModel handle(dynamic error) {
     if (error is DioException) {
@@ -15,7 +14,7 @@ class ApiErrorHandler {
         case DioExceptionType.unknown:
           return ApiErrorModel(
               message:
-              "Connection to the server failed due to internet connection");
+                  "Connection to the server failed due to internet connection");
         case DioExceptionType.receiveTimeout:
           return ApiErrorModel(
               message: "Receive timeout in connection with the server");

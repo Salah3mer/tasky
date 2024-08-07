@@ -8,6 +8,7 @@ class EndPoints {
   static const String addTask = 'todos';
   static const String todos = 'todos/';
   static const String tasks = 'todos?page=';
+  static const String profile = 'auth/profile';
   static String imageUrl(String name) =>
       'https://todo.iraqsapp.com/images/$name';
 }

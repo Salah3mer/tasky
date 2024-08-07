@@ -38,8 +38,7 @@ class RegisterViewBody extends StatelessWidget {
               CustomSnackBar.error(
                   messagePadding: EdgeInsetsDirectional.all(5),
                   maxLines: 5,
-                  message:
-                      '${state.error}'));
+                  message: '${state.error}'));
         }
       },
       builder: (BuildContext context, RegisterState state) => SafeArea(
@@ -72,17 +71,20 @@ class RegisterViewBody extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              (state is RegisterLoadingState)?Center(child: CircularProgressIndicator(),):
-              CustomButton(
-                  text: 'Sign Up',
-                  onTap: () {
-                    if (RegisterCubit.get(context)
-                        .formKey
-                        .currentState!
-                        .validate()) {
-                      RegisterCubit.get(context).register();
-                    }
-                  }),
+              (state is RegisterLoadingState)
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : CustomButton(
+                      text: 'Sign Up',
+                      onTap: () {
+                        if (RegisterCubit.get(context)
+                            .formKey
+                            .currentState!
+                            .validate()) {
+                          RegisterCubit.get(context).register();
+                        }
+                      }),
               const SizedBox(
                 height: 24,
               ),

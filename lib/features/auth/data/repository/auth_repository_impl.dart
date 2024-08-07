@@ -23,8 +23,7 @@ class AuthRepositoryImpl extends AuthRepository {
       final response =
           await dioClient.post(EndPoints.login, data: loginModel.toJson());
 
-
-        return right(UserModel.fromJson(response.data));
+      return right(UserModel.fromJson(response.data));
     } catch (e) {
       return left(ApiErrorHandler.handle(e));
     }
