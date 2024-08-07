@@ -20,6 +20,7 @@ class _TabBarListState extends State<TabBarList> {
       scrollDirection: Axis.horizontal,
       itemCount: items.length,
       itemBuilder: (context, index) => InkWell(
+          borderRadius: BorderRadius.circular(20) ,
           onTap: () {
             setState(() {
               currentIndex = index;
